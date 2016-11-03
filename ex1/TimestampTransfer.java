@@ -16,20 +16,20 @@ import java.util.Scanner;
 public class TimestampTransfer {
 	@SuppressWarnings("resource")
 	public static void main(String[] args){
-		Scanner scanner = new Scanner(System.in);
-		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		while (scanner.hasNext()){
-			String line = scanner.nextLine();
-			Date lineDate = null;
-			long lineTimestamp;
-			try {
-				lineDate = inputFormat.parse(line);
-				lineTimestamp = lineDate.getTime();
-				System.out.println(outputFormat.format(lineDate) + " to " + lineTimestamp);
+		Scanner scanner = new Scanner(System.in);	//键盘输入
+		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");		//创建对象并定义输入的格式
+		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");	//创建对象并定义输出的格式
+		while (scanner.hasNext()){		//while循环，判断是否有输入
+			String line = scanner.nextLine();	//接受下一行的输入传递给line
+			Date lineDate = null;	//定义Date类型的变量
+			long lineTimestamp;		//定义long类型的变量
+			try {					//捕获异常
+				lineDate = inputFormat.parse(line);		//把每行输入的结果转成日期格式并赋值给lineDate
+				lineTimestamp = lineDate.getTime();		//把输入的结果转换成一个long型，时间戳
+				System.out.println(outputFormat.format(lineDate) + " to " + lineTimestamp);	//输出日期格式和时间戳
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e.printStackTrace();	//输出异常类型
 			}
 		}
 	}
